@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Form</title>
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function(){
+                const output = document.getElementById('imagePreview');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function uploadImage() {
+            const formData = new FormData();
+            const fileInput = document.getElementById('imageFile');
+            const file = fileInput.files[0];
+            formData.append('imageFile', file);
+
+            fetch('/products/uploadImage', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(url => {
+                document.getElementById('productImageUrl').value = url;
+                document.getElementById('imagePreview').src = url;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+<h1>여행 큰틀 상품 등록/수정</h1>
+<form th:action="@{/products}" th:object="${product}" method="post">
+
+    <input type="hidden" th:field="*{productId}" />
+    <div>
+        <label>상품명:</label>
+        <input type="text" th:field="*{productName}" />
+    </div>
+    <div>
+        <label>설명:</label>
+        <textarea th:field="*{productDescription}"></textarea>
+    </div>
+    <div>
+        <label>이미지 URL:</label>
+        <input type="text" th:field="*{productImageUrl}" id="productImageUrl" readonly />
+    </div>
+    <div>
+        <label>이미지 업로드:</label>
+        <input type="file" id="imageFile" accept="image/*" onchange="previewImage(event)" />
+        <button type="button" onclick="uploadImage()">업로드</button>
+    </div>
+    <div>
+        <img id="imagePreview" src="#" alt="이미지 미리보기" style="max-width: 200px; display: none;" />
+    </div>
+    <div>
+        <label>국제 여부:</label>
+        <select th:field="*{productIsInternational}">
+            <option th:value="false" th:text="'국내'"></option>
+            <option th:value="true" th:text="'해외'"></option>
+        </select>
+    </div>
+    <div>
+        <label>판매 여부:</label>
+        <select th:field="*{productFlag}">
+            <option th:value="0" th:text="'판매 중'"></option>
+            <option th:value="1" th:text="'삭제'"></option>
+        </select>
+    </div>
+    <div>
+        <label>출발 공항:</label>
+        <select th:field="*{productPlaceOfDeparture}">
+            <option th:value="1" th:text="'인천국제공항'"></option>
+            <option th:value="2" th:text="'김포국제공항'"></option>
+            <option th:value="3" th:text="'제주국제공항'"></option>
+            <option th:value="4" th:text="'부산 김해국제공항'"></option>
+            <option th:value="5" th:text="'대구국제공항'"></option>
+            <option th:value="6" th:text="'청주국제공항'"></option>
+            <option th:value="7" th:text="'무안국제공항'"></option>
+            <option th:value="8" th:text="'양양국제공항'"></option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">저장</button>
+    </div>
+</form>
+<a href="/products">목록으로 돌아가기</a>
+<script>
+    document.getElementById('imageFile').addEventListener('change', function() {
+        document.getElementById('imagePreview').style.display = 'block';
+    });
+</script>
+</body>
+</html>

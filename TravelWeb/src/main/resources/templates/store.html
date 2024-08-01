@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>상품 목록</title>
+</head>
+<body>
+<h1>상품 목록</h1>
+<ul>
+    <li th:each="product : ${products}" th:if="${!product.productFlag}">
+        <a th:href="@{/store/{id}(id=${product.productId})}">
+            <img th:src="${product.productImageUrl}" alt="상품 이미지" style="max-width: 200px;" />
+            <h2 th:text="${product.productName}"></h2>
+        </a>
+        <p th:text="${product.productDescription}"></p>
+        <p th:text="${product.productIsInternational ? '해외' : '국내'}"></p>
+        <p>판매 중</p>
+        <p>
+            <span th:switch="${product.productPlaceOfDeparture}">
+                <span th:case="1">인천국제공항</span>
+                <span th:case="2">김포국제공항</span>
+                <span th:case="3">제주국제공항</span>
+                <span th:case="4">부산 김해국제공항</span>
+                <span th:case="5">대구국제공항</span>
+                <span th:case="6">청주국제공항</span>
+                <span th:case="7">무안국제공항</span>
+                <span th:case="8">양양국제공항</span>
+                <span th:case="*">알 수 없음</span>
+            </span>
+        </p>
+        <p>조회수: <span th:text="${product.productViews}"></span></p> <!-- 조회수 추가 -->
+        <p>수정 날짜: <span th:text="${#temporals.format(product.productUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}"></span></p> <!-- 수정 날짜 추가 -->
+    </li>
+</ul>
+</body>
+</html>

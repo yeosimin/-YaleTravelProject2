@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="wishPut:${wishPut}">
+    <p th:text="${wishPut.wishName}"></p>
+    <p th:text="${wishPut.wishPrice}"></p>
+    <p th:text="${wishPut.wishId}"></p>
+    <p></p>
+    <p></p>
+    <p></p>
+
+</div>
+</body>
+</html>

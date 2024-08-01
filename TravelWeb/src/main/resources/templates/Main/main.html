@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 115%;
+            height: 115%;
+            left: -15%;
+            top: -15%;
+        }
+
+        iframe {
+            width: 110%;
+            height: 110%;
+            pointer-events: none;
+            padding: -20px;
+        }
+
+        .overlay {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .section:first-child {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1;
+            top: 0;
+        }
+
+        .section:nth-of-type(2),
+        .section:nth-of-type(3) {
+            position: relative;
+            background: #00000000;
+            z-index: 2;
+        }
+
+        .section:nth-of-type(3) {
+            background: #00000000;
+        }
+
+        /* 빈 공간 채우기 */
+
+        .section table img {
+            width: 300px;
+            border-radius: 50%;
+        }
+
+        .section table img:not(#img) {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .table-bottom {
+            margin-top: 50px;
+
+        }
+
+        .table-bottom caption {
+            margin-top: 100px;
+
+        }
+
+        .section caption span {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        s table {
+            margin-top: 100px;
+        }
+
+        table th img:first-child {
+            margin-left: 150px;
+            margin-top: 50px;
+
+        }
+
+        table th p {
+            position: relative;
+            top: -170px;
+            font-size: 20px;
+            color: #fff;
+            font-weight: bold;
+            left: 15%;
+            letter-spacing: -1px;
+            width: 100%;
+
+
+
+        }
+
+        table .table-detail {
+            position: relative;
+            top: -100px;
+            width: 250px;
+            background: #fff;
+            box-shadow: rgba(0, 0, 0, 0.3) 10px 10px 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            height: 150px;
+            left: 200px;
+        }
+
+        table .table-detail p {
+
+            position: relative;
+            top: 15px;
+            font-size: 14px;
+            color: #000;
+            text-align: left;
+            width: 220px;
+            left: 15px;
+
+        }
+    </style>
+</head>
+
+<body>
+<form id="searchForm1" onsubmit="redirectToSearch1(); return false;">
+    <div class="main_wrap">
+        <div class="header_content gna">
+            <header class="common_menu">
+                <nav class="header_nav ">
+                    <ul>
+                        <li><a href="#"><img src="./img/logo/logo-trip-to.png" alt="" style="width: 80px;"></a></li>
+                        <li><a href="#" onmouseover="cateHover('cate_box_child9')" onmouseout="cateOut()"
+                               style="margin-top: 6px;"><img src="./img/kategory/kategory.png" alt=""><span
+                                style="vertical-align: top; margin-left: 5px;">전체메뉴</span></a>
+                        </li>
+                        <li><a href="#">해외여행</a></li>
+                        <li><a href="#">국내여행</a></li>
+                        <li><a href="#">BEST</a></li>
+                        <li><a href="" onmouseover="cateHover('cate_box_child8')" onmouseout="cateOut()">투어/ 입장권</a>
+                        </li>
+                    </ul>
+                    <div class="cate_box4 cate_box_child9" onmouseover="cateHover('cate_box_child9')"
+                         onmouseout="cateOut()">
+                        <div class="wrap_nav">
+                            <div class="box_cont_wrap">
+                                <div class="box_cont cate_section">
+                                    <h3 style="font-size: 15px;">전체보기</h3>
+                                </div>
+                                <div class="box_cont_top_menu">
+                                    <div class="nav_side_a">
+                                        <h3><a href="../project/search_outer.html">아우터</a></h3>
+                                        <ul>
+                                            <li><a href="#" style="width: 50px;">쟈켓</a></li>
+                                            <li><a href="" style="width: 50px;">점퍼</a></li>
+                                            <li><a href="" style="width: 85px;">트렌치코트</a></li>
+                                            <li><a href="" style="width: 50px;">코트</a></li>
+                                            <li><a href="" style="width: 80px;">다운/패딩</a></li>
+                                            <li><a href="" style="width: 80px;">무스탕/퍼</a></li>
+                                            <li><a href="" style="width: 65px;">가디건</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="box_cont_top_menu2">
+                                    <div class="nav_side_a">
+                                        <h3><a href="#">탑</a></h3>
+                                        <ul>
+                                            <li><a href="#" style="width: 100px;">블라우스/셔츠</a></li>
+                                            <li><a href="" style="width: 60px;">티셔츠</a></li>
+                                            <li><a href="" style="width: 50px;">니트</a></li>
+                                            <li><a href="" style="width: 90px;">슬리브리스</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="box_cont_top_menu3">
+                                    <div class="nav_side_a">
+                                        <h3><a href="#">스커트</a></h3>
+                                        <ul>
+                                            <li><a href="#" style="width: 50px;">미니</a></li>
+                                            <li><a href="" style="width: 50px;">팬슬</a></li>
+                                            <li><a href="" style="width: 60px;">플레어</a></li>
+                                            <li><a href="" style="width: 50px;">데님</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="box_cont_top_menu4">
+                                    <div class="nav_side_a">
+                                        <h3><a href="#">팬츠</a></h3>
+                                        <ul>
+                                            <li><a href="#" style="width: 50px;">포멀</a></li>
+                                            <li><a href="" style="width: 60px;">캐쥬얼</a></li>
+                                            <li><a href="" style="width: 50px;">쇼츠</a></li>
+                                            <li><a href="" style="width: 50px;">데님</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="box_cont_top_menu5">
+                                    <div class="nav_side_a">
+                                        <h3><a href="#">원피스</a></h3>
+                                        <ul>
+                                            <li><a href="#" style="width: 50px;">미니</a></li>
+                                            <li><a href="" style="width: 50px;">미디</a></li>
+                                            <li><a href="" style="margin-left: -10px;">롱</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="top_logo">
+                        <li><a href="#" id="myBtn">LOGIN/JOIN</a></li>
+                        <li><a href=""><img src="../img/icon/jjim.png" alt=""></a></li>
+                        <li><a href="" onmouseover="cateHover('cate_box_child7')" onmouseout="cateOut()"><img
+                                src="../img/icon/loginwh.png" alt=""></a></li>
+                        <li><a href=""><img src="./img/go/go.png" alt=""></a></li>
+                        <li><a href="" onmouseover="cateHover('cate_box_child10')" onmouseout="cateOut()"><img
+                                src="../img/icon/dod2.png" alt=""></a></li>
+                    </ul>
+                </nav>
+                <div class="cate_box2 cate_box_child7" onmouseover="cateHover('cate_box_child7')"
+                     onmouseout="cateOut()" style="z-index: 30;">
+                    <div class="nav_side_a">
+                        <ul>
+                            <li><a href="#" style="width: 75px;">마이페이지</a></li>
+                            <li><a href="#" style="width: 60px;">주문내역</a></li>
+                            <li><a href="#" style="width: 60px;">쿠폰조회</a></li>
+                            <li><a href="#" style="width: 60px;">마일리지</a></li>
+                            <li><a href="#" style="width: 65px;">1:1문의</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cate_box3 cate_box_child8" onmouseover="cateHover('cate_box_child8')"
+                     onmouseout="cateOut()" style="z-index: 30;">
+                    <div class="nav_side_a">
+                        <ul>
+                            <li><a href="#" style="width: 75px;">공지사항</a></li>
+                            <li><a href="#" style="width: 60px;">Q&A</a></li>
+                            <li><a href="#" style="width: 60px;">FAQ</a></li>
+                            <li><a href="#" style="width: 60px;">EVENT</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header_logo">
+                    <h1 class="header_logo_hidden"><a href="#">Make Your Trip To</a></h1>
+                    <h2 class="header_logo_title"><a href="#">트립 투 는 가장 편리하고 안전한 여행을 기획합니다.</a></h2>
+                    <h1 class="header_logo_hidden header-hover"><a href="#" id="mysc">GO!</a></h1>
+                </div>
+                <div class="header_bottom_nav logo_menu"
+                     style="z-index: 10; background-color: rgba(0, 0, 0, 0.3); color: #fff;">
+                    <ul>
+                        <li>
+                            <a href="#" onmouseover="cateHover('cate_box_child0')" onmouseout="cateOut()"></a>
+                        </li>
+                        <li>
+                            <a href="#" onmouseover="cateHover('cate_box_child1')" onmouseout="cateOut()"></a>
+                        </li>
+                        <li>
+                            <a href="#" onmouseover="cateHover('cate_box_child2')" onmouseout="cateOut()"></a>
+                        </li>
+                        <li>
+                            <a href="#" onmouseover="cateHover('cate_box_child3')" onmouseout="cateOut()"></a>
+                        </li>
+                        <li>
+                            <a href="#" onmouseover="cateHover('cate_box_child4')" onmouseout="cateOut()"></a>
+                        </li>
+                        <li>
+                            <a href="#" onmouseover="cateHover('cate_box_child5')" onmouseout="cateOut()"></a>
+                        </li>
+                        <li>
+                            <a href="#" onmouseover="cateHover('cate_box_child6')" onmouseout="cateOut()">
+                                <img src="" alt="" class="search_img">
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="cate_box cate_box_child0" onmouseover="cateHover('cate_box_child0')"
+                         onmouseout="cateOut()">
+                        <div class="wrap_nav">
+                            <div class="box_cont_wrap">
+                                <div class="box_cont cate_section">
+                                    <h3>NEW</h3>
+                                    <ul>
+                                        <li><a href="#">이달의
+                                            신상품</a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">NEW
+                                            컬렉션</a></li>
+                                    </ul>
+                                </div>
+                                <div><img src="../img/nav/new.jpg" alt=""></div>
+                            </div>
+                            <div class="nav_side">
+                                <div class="nav_side_title">
+                                    <h3>이 달의 신상품</h3>
+                                </div>
+                                <ul>
+                                    <li>자유와 즐거움의 <br>에너지를 담은 멜 블루의 <br>NEW Merle Bleu <br><br><br><a href="#">SHOP
+                                        NOW</a></li>
+                                </ul>
+                                <div class="nav_side_img">
+                                    <img src="../img/nav/new4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_box cate_box_child1" onmouseover="cateHover('cate_box_child1')"
+                         onmouseout="cateOut()">
+                        <div class="wrap_nav">
+                            <div class="box_cont_wrap">
+                                <div class="box_cont cate_section">
+                                    <h3>BEST</h3>
+                                    <ul>
+                                        <li><a href="#">이달의 베스트</a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">아우터 베스트</a></li>
+                                    </ul>
+                                </div>
+                                <div><img src="../img/nav/best.jpg" alt=""></div>
+                            </div>
+                            <div class="nav_side">
+                                <div>
+                                    <h3></h3>
+                                </div>
+                                <!-- <ul>
+                                    <li>자유와 즐거움의 <br>에너지를 담은 멜 블루의 <br>NEW Merle Bleu <br><br><br><a
+                                            href="#">SHOP
+                                            NOW</a></li>
+                                </ul> -->
+                                <div class="nav_side_img">
+                                    <img src="../img/nav/best2.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_box cate_box_child2" onmouseover="cateHover('cate_box_child2')"
+                         onmouseout="cateOut()">
+                        <div class="wrap_nav">
+                            <div class="box_cont_wrap">
+                                <div class="box_cont cate_section">
+                                    <h3>기획전</h3>
+                                    <ul>
+                                        <li><a href="#" style="color: rgb(109, 109 ,109);">EXCLCIVE</a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#"></a></li>
+                                    </ul>
+                                </div>
+                                <div><img src="#" alt=""></div>
+                            </div>
+                            <div class="nav_side">
+                                <div>
+                                    <div><img src="../img/nav/ex2.jpg" alt="" style="width: 220px;"></div>
+                                    <h3></h3>
+                                </div>
+                                <!-- <ul>
+                                    <li>자유와 즐거움의 <br>에너지를 담은 멜 블루의 <br>NEW Merle Bleu <br><br><br><a
+                                            href="#">SHOP
+                                            NOW</a></li>
+                                </ul> -->
+                                <div class="nav_side_img">
+                                    <img src="#" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_box cate_box_child3" onmouseover="cateHover('cate_box_child3')"
+                         onmouseout="cateOut()">
+                        <div class="wrap_nav">
+                            <div class="box_cont_wrap">
+                                <div class="box_cont cate_section">
+                                    <h3>전체메뉴</h3>
+                                </div>
+                                <div class="box_cont_menu">
+                                    <h3><a href="../project/search_outer.html">아우터</a></h3>
+                                    <ul>
+                                        <li><a href="#" style="width: 30px;">쟈켓</a></li>
+                                        <li><a href="" style="width: 30px;">점퍼</a></li>
+                                        <li><a href="" style="width: 75px;">트렌치코트</a></li>
+                                        <li><a href="" style="width: 30px;">코트</a></li>
+                                        <li><a href="" style="width: 65px;">다운/패딩</a></li>
+                                        <li><a href="" style="width: 65px;">무스탕/퍼</a></li>
+                                        <li><a href="" style="width: 45px;">가디건</a></li>
+                                    </ul>
+                                </div>
+                                <div class="box_cont_menu2">
+                                    <h3>탑</h3>
+                                    <ul>
+                                        <li><a href="#" style="width: 100px;">블라우스/셔츠</a></li>
+                                        <li><a href="" style="width: 45px;">티셔츠</a></li>
+                                        <li><a href="" style="width: 30px;">니트</a></li>
+                                        <li><a href="" style="width: 75px;">슬리브리스</a></li>
+                                    </ul>
+                                </div>
+                                <div class="box_cont_menu3">
+                                    <h3>스커트</h3>
+                                    <ul>
+                                        <li><a href="#" style="width: 30px;">미니</a></li>
+                                        <li><a href="" style="width: 30px;">팬슬</a></li>
+                                        <li><a href="" style="width: 45px;">플레어</a></li>
+                                        <li><a href="" style="width: 30px;">데님</a></li>
+                                    </ul>
+                                </div>
+                                <div class="box_cont_menu4">
+                                    <h3>팬츠</h3>
+                                    <ul>
+                                        <li><a href="#" style="width: 30px;">포멀</a></li>
+                                        <li><a href="" style="width: 45px;">캐쥬얼</a></li>
+                                        <li><a href="" style="width: 30px;">쇼츠</a></li>
+                                        <li><a href="" style="width: 30px;">데님</a></li>
+                                    </ul>
+                                </div>
+                                <div class="box_cont_menu5">
+                                    <h3>원피스</h3>
+                                    <ul>
+                                        <li><a href="#" style="width: 30px;">미니</a></li>
+                                        <li><a href="" style="width: 30px;">미디</a></li>
+                                        <li><a href="" style="width: 15px;">롱</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_box cate_box_child4" onmouseover="cateHover('cate_box_child4')"
+                         onmouseout="cateOut()">
+                        <div class="wrap_nav">
+                            <div class="box_cont_wrap">
+                                <div class="box_cont cate_section">
+                                    <div class="box_cont_menu_stuff"
+                                         style="margin-top: -31px; margin-left: 22px; width: 100%;">
+                                        <h3>패션잡화</h3>
+                                        <ul>
+                                            <li><a href="#" style="width: 30px;">가방</a></li>
+                                            <li><a href="" style="width: 30px;">슈즈</a></li>
+                                            <li><a href="" style="width: 30px;">모자</a></li>
+                                            <li><a href="" style="width: 90px;">스카프/머플러</a></li>
+                                            <li><a href="" style="width: 30px;">벨트</a></li>
+                                            <li><a href="" style="width: 80px;">양말/스타킹</a></li>
+                                            <li><a href="" style="width: 30px;">기타</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="box_cont_menu_stuff1">
+                                    <ul>
+                                        <li><a href=""><img src="../img/nav/more.png" alt=""></a></li>
+                                        <li><a href=""><img src="" alt=""></a></li>
+                                        <li><a href=""><img src="" alt=""></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="box_cont_menu_stuff2">
+                                <ul>
+                                    <li><a href=""><img src="../img/nav/more2.png" alt=""></a></li>
+                                    <li><a href=""><img src="" alt=""></a></li>
+                                    <li><a href=""><img src="" alt=""></a></li>
+                                </ul>
+                            </div>
+                            <div class="box_cont_menu_stuff3">
+                                <ul>
+                                    <li><a href=""><img src="../img/nav/more3.png" alt=""></a></li>
+                                    <li><a href=""><img src="" alt=""></a></li>
+                                    <li><a href=""><img src="" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_box cate_box_child5" onmouseover="cateHover('cate_box_child5')"
+                         onmouseout="cateOut()">
+                        <div class="wrap_nav">
+                            <div class="box_cont_wrap">
+                                <div class="box_cont_menu_story">
+                                    <ul>
+                                        <li><a href=""><img src="../img/nav/story.png" alt=""></a></li>
+                                        <li><a href=""><img src="" alt=""></a></li>
+                                        <li><a href=""><img src="" alt="">컬렉션</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="box_cont_menu_story2">
+                                <ul>
+                                    <li><a href=""><img src="../img/nav/story2.png" alt=""></a></li>
+                                    <li><a href=""><img src="" alt=""></a></li>
+                                    <li><a href=""><img src="" alt="">뉴스/이벤트</a></li>
+                                </ul>
+                            </div>
+                            <div class="box_cont_menu_story3">
+                                <ul>
+                                    <li><a href=""><img src="../img/nav/story3.png" alt=""></a></li>
+                                    <li><a href=""><img src="" alt=""></a></li>
+                                    <li><a href=""><img src="" alt="">브랜드 소개</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cate_box cate_box_child6" onmouseover="cateHover('cate_box_child6')"
+                         onmouseout="cateOut()">
+                        <div class="wrap_nav">
+                            <div class="box_cont_wrap" style="margin-left: 50%;">
+                                <div  style="margin: 0 auto;" class="search_input">
+                                    <input autocomplete="off" class="search_input_detail" type="text"
+                                           id="searchKeyword1" placeholder="검색어를 입력하세요" style="padding: 15px;">
+                                    <button class="search_button" type="submit"
+                                            onclick="redirectToSearch1()">검색</button>
+                                    <br><span class="error-message" id="errorMessage1"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kategory">
+                            <ul>
+                                <h3>카테고리 검색</h3>
+                                <li><a href="../">#아우터</a></li>
+                                <li><a href="">#탑</a></li>
+                                <li><a href="">#스커트</a></li>
+                                <li><a href="">#팬츠</a></li>
+                                <li><a href="">#원피스</a></li>
+                            </ul>
+                        </div>
+                        <div class="kategory_gif">
+                            <img src="../img/nav/MB.gif" alt="">
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="mySlides fade">
+        </div>
+    </div>
+    <div style="text-align:center; margin-top: -210px;">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    </div>
+</form>
+
+<form id="searchForm2" onsubmit="handleSearch(); return false;">
+    <div class="cate_box5 cate_box_child10" onmouseover="cateHover('cate_box_child10')" onmouseout="cateOut()">
+        <div class="wrap_nav2">
+            <div class="box_cont_wrap2" style="margin-left: 50%;">
+                <div id="input-form" style="margin: 0 auto;" class="search_input">
+                    <input autocomplete="off" class="search_input_detail" type="text" id="searchKeyword2"
+                           placeholder="검색어를 입력하세요" style="padding: 15px;">
+                    <button class="search_button" type="submit" onclick="handleSearch()">검색</button>
+                    <p style="margin-bottom: -15px;" class="error-message" id="errorMessage2"></p>
+                </div>
+            </div>
+        </div>
+        <div class="kategory2">
+            <ul>
+                <h3>카테고리 검색</h3>
+                <li><a href="">#아우터</a></li>
+                <li><a href="">#탑</a></li>
+                <li><a href="">#스커트</a></li>
+                <li><a href="">#팬츠</a></li>
+                <li><a href="">#원피스</a></li>
+            </ul>
+        </div>
+        <div class="srch_keyword_box">
+            <div class="recent_keyword">
+                <h3>최근 검색어</h3>
+                <a class="delete" onclick="allDeleteCookie()" style="cursor: pointer;">전체삭제</a>
+                <ul id="recentSearchList">
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+<!--asdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd-->
+
+<div class="section">
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/innwT2d4ric?autoplay=1&mute=1&loop=1&playlist=innwT2d4ric"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="overlay">sdfgsdfgsdfg</div> <!-- 투명한 오버레이 -->
+    </div>
+</div>
+<div class="section" style="margin-top: 1400px;">
+    <form action="">
+        <div class="slide-baner">
+            <div class="slide-baner-content">
+                <a href=""><img src="../img/trip/1cd58e3e-2879-4570-9b7c-3112ebc98186.jpg" alt=""></a>
+                <div class="new_text">
+                    <h3>NEW <br>Arrivals</h3>
+                </div>
+                <a href="#">
+                    <div class="new_text2">SHOP NOW</div>
+                </a>
+            </div>
+        </div>
+        <div class="scroll" data-scroll>
+            <div class="scroll-content" data-scroll-content>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/5dda58cb-40f4-4d66-82a0-089d346040b8.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">여기는섬</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 item_bottom js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg" draggable="false"
+                                                onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 item_bottom js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 item_bottom js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner ">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 item_bottom js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner ">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 item_bottom js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"
+                                                draggable="false" onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="scroll-indicator-background"></div>
+            <div class="scroll-indicator" data-scroll-indicator></div>
+        </div>
+    </form>
+</div>
+<div class="section">
+    <div class="best_sellings">
+        <div class="slide-baner">
+            <div class="slide-baner-content">
+                <a href=""><img src="../img/trip/5dda58cb-40f4-4d66-82a0-089d346040b8.jpg" alt=""></a>
+                <div class="new2_text">
+                    <h3>BEST <br>sellings</h3>
+                </div>
+                <a href="">
+                    <div class="new2_text2">SHOP NOW</div>
+                </a>
+            </div>
+        </div>
+        <div class="scroll" data-scroll2>
+            <div class="scroll-content" data-scroll-content2>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg" draggable="false"
+                                                onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 item_bottom js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg" draggable="false"
+                                                onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg" draggable="false"
+                                                onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 item_bottom js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg"draggable="false"
+                                                onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg" draggable="false"
+                                                onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 item_bottom js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg" draggable="false"
+                                                onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+                <article class="slide-1 js-slide">
+                    <div class="slide_inner">
+                        <div class="slide_img js-transition-img">
+                            <figure class="js-transition-img_inner">
+                                <a href=""><img class="scroll-area" src="../img/trip/6c6483d7-a9b0-4ad1-8520-3663ba357cc6.jpg" draggable="false"
+                                                onmousedown="startDrag(event)"></a>
+                                <p class="merle_title">Merle Bleu</p>
+                                <p class="item_name">(SET-UP) 하프슬리브 턴업소매 자켓_C242MSF237</p>
+                                <p class="item_price">299,000원</p>
+                                <p class="item_price2">239,200원</p>
+                                <p class="item_sale">20%</p>
+                            </figure>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="scroll-indicator-background2"></div>
+            <div class="scroll-indicator2" data-scroll-indicator2></div>
+        </div>
+    </div>
+    </form>
+</div>
+<div class="section" style="margin-top: 100px;">
+    <div class="table-bottom">
+        <caption><span style="font-size: 17px; font-weight: bold; margin-left: 100px;">Weekly 추천 테마</span></caption>
+        <colgroup>
+            <col style="width: 25%;">
+            <col style="width: 25%;">
+            <col style="width: 25%;">
+            <col style="width: 25%;">
+        </colgroup>
+        <table>
+            <th><img src="../img/trip/82fd38c4-2133-4f42-ad3c-085e32a3381a.jpg" alt="" >
+                <p>아리가또 오사카!</p>
+            </th>
+            <th><img src="../img/trip/85cd0644-676e-4eeb-8e4e-80e6ef964b0b.jpg" alt="" >
+                <p>아리가또 오사카!</p>
+            </th>
+            <th><img src="../img/trip/660ce3cc-7f15-42bb-8a70-965b7d890e94.jpg" alt="" >
+                <p>아리가또 오사카!</p>
+            </th>
+            <th><img src="../img/trip/8854bbd7-c0b5-4d17-8137-01d3e501a66c.jpg" alt="" >
+                <p>아리가또 오사카!</p>
+            </th>
+        </table>
+    </div>
+</div>
+<div class="section">
+    <div class="table-bottom">
+        <caption><span style="font-size: 17px; font-weight: bold; margin-left: 100px;">이번주 판매 베스트</span></caption>
+        <colgroup>
+            <col style="width: 25%;">
+            <col style="width: 25%;">
+            <col style="width: 25%;">
+            <col style="width: 25%;">
+        </colgroup>
+        <table>
+            <th><img src="../img/trip/20bd14cd-3d53-40c6-bb26-746d5cef9055 (1).jpg" alt="">
+                <p>아리가또 오사카!</p>
+                <div class="table-detail">
+                    <p>[동남아/중국/사이판] 가성비 골프 5/6일</p><br>
+                    <p style="font-size: 13px; font-weight:bold; color: #999;">#광활한 초원의 테를지 #신게르 투숙...</p><br>
+                    <p style="text-align: right;">672,700 <span
+                            style="font-size: 13px; font-weight:bold; color: #999;">원~</span></p>
+                </div>
+            </th>
+            <th><img src="../img/trip/a8d5bf99-76c9-44b9-aab4-af507babc92a.jpg" alt="">
+                <p>아리가또 오사카!</p>
+                <div class="table-detail">
+                    <p>[동남아/중국/사이판] 가성비 골프 5/6일</p><br>
+                    <p style="font-size: 13px; font-weight:bold; color: #999;">#광활한 초원의 테를지 #신게르 투숙...</p><br>
+                    <p style="text-align: right;">672,700 <span
+                            style="font-size: 13px; font-weight:bold; color: #999;">원~</span></p>
+                </div>
+            </th>
+            <th><img src="../img/trip/35a745b1-ade4-4caa-ba11-67f138019b6b.jpg" alt="">
+                <p>아리가또 오사카!</p>
+                <div class="table-detail">
+                    <p>[동남아/중국/사이판] 가성비 골프 5/6일</p><br>
+                    <p style="font-size: 13px; font-weight:bold; color: #999;">#광활한 초원의 테를지 #신게르 투숙...</p><br>
+                    <p style="text-align: right;">672,700 <span
+                            style="font-size: 13px; font-weight:bold; color: #999;">원~</span></p>
+                </div>
+            </th>
+            <th><img src="../img/trip/a61010c2-0a2e-4403-9b71-2fc402c8e090.jpg" alt="">
+                <p>아리가또 오사카!</p>
+                <div class="table-detail">
+                    <p>[동남아/중국/사이판] 가성비 골프 5/6일</p><br>
+                    <p style="font-size: 13px; font-weight:bold; color: #999;">#광활한 초원의 테를지 #신게르 투숙...</p><br>
+                    <p style="text-align: right;">672,700 <span
+                            style="font-size: 13px; font-weight:bold; color: #999;">원~</span></p>
+                </div>
+            </th>
+        </table>
+    </div>
+</div>
+<form action="">
+    <div class="footer-wrap">
+        <div class="footer-content">
+            <div class="footer-inline">
+                <img class="footer-img" src="../img/trip/efe1ee6b-a5bd-4ef2-96e0-02d7205b695c.jpg" width="345" height="345" alt="Avatar">
+                <div class="footer-overlay">
+                    <div class="overlay-text">@Merle Bleu<br>프랑스 패션 <br>소셜네트워크</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-inline">
+                <img class="footer-img" src="../img/trip/efe1ee6b-a5bd-4ef2-96e0-02d7205b695c.jpg" width="345" height="345" alt="Avatar">
+                <div class="footer-overlay">
+                    <div class="overlay-text">@Merle Bleu<br>프랑스 패션 <br>소셜네트워크</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-inline">
+                <img class="footer-img" src="../img/trip/efe1ee6b-a5bd-4ef2-96e0-02d7205b695c.jpg" width="345" height="345" alt="Avatar">
+                <div class="footer-overlay">
+                    <div class="overlay-text">@Merle Bleu<br>프랑스 패션 <br>소셜네트워크</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-inline">
+                <img class="footer-img" src="../img/trip/efe1ee6b-a5bd-4ef2-96e0-02d7205b695c.jpg" width="345" height="345" alt="Avatar">
+                <div class="footer-overlay">
+                    <div class="overlay-text">@Merle Bleu<br>프랑스 패션 <br>소셜네트워크</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-inline">
+                <img class="footer-img" src="../img/trip/efe1ee6b-a5bd-4ef2-96e0-02d7205b695c.jpg" width="345" height="345" alt="Avatar">
+                <div class="footer-overlay">
+                    <div class="overlay-text">@Merle Bleu<br>프랑스 패션 <br>소셜네트워크</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-inline">
+                <img class="footer-img" src="../img/trip/efe1ee6b-a5bd-4ef2-96e0-02d7205b695c.jpg" width="345" height="345" alt="Avatar">
+                <div class="footer-overlay">
+                    <div class="overlay-text">@Merle Bleu<br>프랑스 패션 <br>소셜네트워크</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-inline">
+                <img class="footer-img" src="../img/trip/efe1ee6b-a5bd-4ef2-96e0-02d7205b695c.jpg" width="345" height="345" alt="Avatar">
+                <div class="footer-overlay">
+                    <div class="overlay-text">@Merle Bleu<br>프랑스 패션 <br>소셜네트워크</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-inline">
+                <img class="footer-img" src="../img/trip/efe1ee6b-a5bd-4ef2-96e0-02d7205b695c.jpg" width="345" height="345" alt="Avatar">
+                <div class="footer-overlay">
+                    <div class="overlay-text">@Merle Bleu<br>프랑스 패션 <br>소셜네트워크</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="">
+    <div class="footer-bottom-wrap" style=" width: 1900px; position: relative; top: 00px;">
+        <div class="footer-bottom-content">
+            <div class="footer-bottom-title">
+                <a href="#">회사소개</a><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#">해외이용약관</a><a
+                    href="#">특별약관</a>
+            </div>
+            <div class="footer-bottom-detail">상호:㈜Merle Bleu <span class="footer_ footer-bottom-span">공동대표:
+                        안재모</span>
+                여시민 황세정 박주형</span><br>주소:부산광역시 부산진구 중앙대로 631 선물빌딩 10F <span
+                        class="footer-bottom-span2 footer_2"></span>전화:080-000-0000 <span
+                        class="footer-bottom-span3 footer_3"></span>FAX:02-3485 -7599 <span
+                        class="footer-bottom-span4 footer_4"></span>이메일:tripto@tripto.com
+                <br>사업자등록번호:000-00-00000<a href="#">[사업자정보확인]</a><span
+                        class="footer-bottom-span5 footer_5"></span><span class="f-b-l"></span>통신판매업신고번호:2017-서울강남-04214
+                <span class="footer-bottom-span6 footer_6"></span> <span class="f-b-l"></span>개인정보보호책임자:이하늬 <br>고객님은
+                안전거래를 위해 현금으로 결제 시 저희 쇼핑몰에 가입한 구매안전서비스를 이용하실 수 있습니다. <br><br>COPYRIGHTⓒ㈜Merle
+                Bleu.all
+                rights
+                reserved. <span class="footer-bottom-span7 footer_7"></span><span class="f-b-l"></span>호스팅 제공자:㈜위사
+                <span class="f-b-l"></span>managed by <b>WISA.
+            </div>
+            <div class="footer-bottom-right" style="float: right; margin-right: 300px; margin-top: -150px;">
+                <ul style="list-style: none;">
+                    <li style="color: #a3a3a3;">고객상담센터 운영시간</li>
+                    <li style="color: #a3a3a3;">평일:오전10:00-오후17:00</li>
+                    <li style="color: #a3a3a3;">점심시간:오후12:30-오후13:30 <br>주말,공휴일은 휴무입니다.
+                    </li>
+                    <li style=" width: 75px;"><a href="#"><img width="20px" src="../img/icon/kakao.png"
+                                                               alt=""></a><a href="#" style="margin-left: 10px;"><img src="../img/icon/instar.png"
+                                                                                                                      style="width: 20px;" alt=""></a></li>
+                </ul>
+                <div class="footer-middle-title" style="margin-top: 0px; position: absolute;">
+                    <h3 style="color: #3e3e3e;">080-022-1500</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<style>
+    .no-scroll {
+        overflow: hidden;
+    }
+
+    .modal-content form {
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        padding: 0 50px;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        width: 550px;
+        height: 550px;
+        box-shadow: -1px -1px 5px #fff, 1px 1px 5px #c4c4c47c;
+        border-radius: 20%;
+        z-index: 1000;
+    }
+
+    .modal-content form input:not(.special) {
+        background: #eee;
+        padding: 16px;
+        margin: 8px 0;
+        width: 85%;
+        border: 0;
+        outline: none;
+        border-radius: 20px;
+        box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+    }
+
+    .modal-content button {
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 15px 45px;
+        margin: 4px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: #6e6e6e;
+    }
+
+    .modal-content .form_btn {
+        box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+    }
+
+    .modal-content .form_btn:active {
+        box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+    }
+
+    .modal-content .overlay_btn {
+        background-color: #ff4b2b;
+        color: #fff;
+        box-shadow: -5px -5px 10px #ff6b3f, 5px 5px 8px #bf4b2b;
+    }
+
+    .modal-content .social-links {
+        margin: 20px auto;
+        width: 300px;
+        margin-left: 146px;
+    }
+
+    .modal-content form h1 {
+        font-weight: bold;
+        margin: 0;
+        color: #292929;
+        font-size: 25px;
+    }
+
+    .modal-content p {
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        margin: 20px 0 30px;
+    }
+
+    .modal-content span {
+        font-size: 12px;
+        color: #a8a8a8;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+
+    }
+
+
+    .modal-content .social-links>div {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        border-radius: 50%;
+        box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+        cursor: pointer;
+    }
+
+    .modal-content .social-links>div>a {
+        font-size: 39px;
+        overflow: hidden;
+        color: rgba(0, 0, 0, 0);
+    }
+
+    .modal-content .social-links div:nth-of-type(1) {
+
+        background-image: url(../img/so/kakao.png);
+        background-size: 40px;
+        background-repeat: no-repeat;
+    }
+
+    .modal-content .social-links div:nth-of-type(2) {
+
+        background-image: url(../img/so/naver.png);
+        background-size: 40px;
+        background-repeat: no-repeat;
+    }
+
+    .modal-content .social-links div:nth-of-type(3) {
+
+        background-image: url(../img/so/google.png);
+        background-size: 100px;
+        background-position: -29px -17px;
+        background-repeat: no-repeat;
+    }
+
+    .modal-content .social-links div:nth-of-type(1):hover {
+        color: #fff;
+        box-shadow: 0px 0px 10px #fffd78, 0px 0px 20px #fffd78, 0px 0px 40px #fffd78, 0px 0px 80px #fffd78;
+    }
+
+    .modal-content .social-links div:nth-of-type(2):hover {
+        color: #fff;
+        box-shadow: 0px 0px 10px #92ff7c, 0px 0px 20px #92ff7c, 0px 0px 40px #92ff7c, 0px 0px 80px #92ff7c;
+    }
+
+    .modal-content .social-links div:nth-of-type(3):hover {
+        color: #fff;
+        box-shadow: 10px 0px 10px #80a2ff, 0px 12px 8px #84ff80, -15px 0px 8px #ffe180, 0px -10px 8px #ff8080;
+    }
+
+    .modal-content .social-links a {
+        color: #292929;
+    }
+
+    .modal-content .social-links div:active {
+        box-shadow: inset 1px 1px 2px #babebc, inset, -1px -1px 2px #fff;
+    }
+
+    .modal-content .fine {
+        clear: both;
+        position: relative;
+        top: 35px;
+        left: -36px;
+    }
+
+    .modal-content .container {
+        position: relative;
+        left: -132px;
+
+    }
+
+    .modal-content .fine span a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .modal-content .form-check-input:active {
+        filter: brightness(90%)
+    }
+
+
+    .modal-content .form-check-input:disabled {
+        pointer-events: none;
+        filter: none;
+        opacity: .5
+    }
+
+    .modal-content .form-check-input:invalid:focus {
+        box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25)
+    }
+
+    .modal-content .form-check-label:not(.special) {
+        color: #aaaaaa
+    }
+
+    .modal-content .form-check-input:active {
+        filter: brightness(90%)
+    }
+
+
+    .modal-content .form-switch {
+        padding-left: 2.5em
+    }
+
+    .modal-content .form-switch .form-check-input {
+        transition: none
+    }
+
+
+
+    .modal-content .form-check-input {
+        float: left;
+        margin-left: -1.5em
+    }
+
+
+    .modal-content .form-check-input:checked {
+        background-color: #2bb632;
+        border-color: #2bb632
+    }
+
+
+    .modal-content .form-check-input {
+        width: 1.2em;
+        height: 1.2em;
+        margin-top: .25em;
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, .25);
+        appearance: none;
+    }
+
+    .modal-content .form-check-input[type=checkbox] {
+        border-radius: 1em
+    }
+
+    .modal-content .container2 {
+        position: relative;
+        top: -24px;
+
+    }
+
+    .modal-content .form-check-input::before {
+        content: '✔';
+        color: #ccc;
+        font-size: 1.2em;
+        line-height: 1;
+    }
+
+    .modal-content .form-check-input[type=checkbox]:checked::before {
+        content: '✔';
+        display: inline-block;
+        font-size: 1.2em;
+        line-height: 1;
+        margin-right: 0.2em;
+        color: #ffffff;
+
+    }
+
+    .modal-content .span {
+        position: relative;
+        left: -70px;
+        font-size: 12px;
+        color: #a8a8a8;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+        top: -6px;
+
+    }
+
+    .modal-content #form-check-input[type="checkbox"] {
+        display: none;
+    }
+
+    .modal-content .custom-checkbox {
+        width: 46px;
+        height: 18px;
+        background-color: #ccc;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .modal-content .custom-checkbox.checked {
+        background-color: #2bb632;
+    }
+
+    .modal-content .custom-checkbox::before {
+        content: '●';
+        font-size: 1em;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        bottom: -20px;
+        transform: translateY(-45%);
+        transition: left 0.3s;
+    }
+
+    .modal-content .custom-checkbox.checked::before {
+        left: 25px;
+    }
+
+    .modal-content .custom-checkbox-label {
+        display: block;
+        padding: 5px;
+        margin-left: 320px;
+    }
+
+    /* 스타일 코드를 넣으세요 */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.1);
+        background-image: none;
+    }
+
+    .modal-content {
+        background-color: #ffffff00;
+        margin: 308px auto;
+        padding: 20px;
+
+        width: 350px;
+        border-radius: 20px;
+        box-shadow: none;
+    }
+
+    .close {
+        color: #c85b5b;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btn_m {
+
+        background: #ffffff;
+        padding: 16px;
+        margin: 8px 0;
+        width: 85%;
+        border: 0;
+        outline: none;
+        border-radius: 20px;
+        box-shadow: inset 1px 1px 5px #babebc, inset -1px -1px 5px #fff;
+    }
+
+    .span_a {
+        font-size: 12px;
+        color: #a8a8a8;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+
+    }
+
+    .errorMessage {
+        color: red;
+        display: none;
+    }
+
+    .successMessage {
+        color: green;
+        display: none;
+    }
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0px;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: none;
+        margin: 15% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: none;
+        width: 80%;
+        /* Could be more or less, depending on screen size */
+
+
+    }
+
+    /* The Close Button */
+    #loginForm .close {
+        color: #7e7e7e;
+        float: right;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        width: 50px;
+        left: 1120px;
+        top: 260px;
+
+    }
+
+    #loginForm .close:hover,
+    #loginForm .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .wrapper1 {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        overflow: hidden;
+        z-index: 1000;
+
+    }
+</style>
+<div id="myModal" class="modal">
+    <div class="modal-content" style="margin-top: 20px;">
+
+        <div class="wrapper1">
+            <form id="loginForm">
+                <span class="close" style="color: #55e12e;">&times;닫기</span>
+                <h1>Login</h1>
+                <input type="email" id="email" placeholder="Email" autofocus minlength="6" maxlength="16">
+                <p id="emailError" class="errorMessage" style="font-size: 12px; margin: 0; padding: 0;">아이디를 입력해주세요
+                </p>
+                <p id="emailSuccess" class="successMessage" style="font-size: 12px; margin: 0; padding: 0;">올바른 이메일
+                    형식입니다</p>
+                <input type="password" id="password" placeholder="Password" minlength="6" maxlength="16">
+                <p id="passwordError" class="errorMessage" style="font-size: 12px; margin: 0; padding: 0;">비밀번호를
+                    입력해주세요</p>
+                <div class="container">
+                    <input class="form-check-input special" type="checkbox" id="checkbox">
+                    <label class="form-check-label" for="checkbox"
+                           style="font-size: 13px; font-weight: normal;">Remember</label>
+                </div>
+                <label class="custom-checkbox-label container2" >
+                    <input class="form-check-input" type="checkbox" id="form-check-input">
+                    <div class="custom-checkbox" ><span class="span"
+                                                                             style="font-size: 13px; font-weight: normal; margin-left: 15px; ">security</span></div>
+                </label>
+                <button class="form_btn" type="submit">Login</button>
+                <br><br>
+                <span>소셜네트워크 로그인</span>
+                <div class="social-links">
+                    <div>
+                        <a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fsharer.kakao.com%2Fpicker%2Flink%3Fapp_key%3D4e0f02e43248fed6c5850431ea527a61%26short_key%3D03f15ee1-f156-45f5-b1ac-824299b8a706#login"
+                           onclick="window.open(this.href, '_blank', 'width=700, height=700'); return false;">●</a>
+                    </div>
+                    <div>
+                        <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
+                           onclick="window.open(this.href, '_blank', 'width=700, height=700'); return false;">●</a>
+                    </div>
+                    <div>
+                        <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=ARZ0qKIwQl0QXZcf5KfQ7kEOghWilUtv6gSpzsBJc595N8ymN8N6v909APLq87dX-x6bBJ5wVQp05Q&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-821045643%3A1713104039405244&theme=mn&ddm=0"
+                           onclick="window.open(this.href, '_blank', 'width=700, height=700'); return false;" class="social-links-google">●</a>
+                    </div>
+                    <footer class="fine">
+                        <span><a href="./join">회원가입</a></span><span style="margin: 20px;"></span>
+                        <span><a href="#">아이디찾기</a></span>
+                        <span style="margin: 20px;"></span><span>
+                                <a href="#">비번찾기</a></span>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/main.js" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Details List</title>
+</head>
+<body>
+<h1>Product Details</h1>
+<table>
+    <thead>
+    <tr>
+        <th>상품디테일아이디</th>
+        <th>상품아이디</th>
+        <th>투어 첫날</th>
+        <th>투어마지막날</th>
+        <th>총 몇명</th>
+        <th>성인가격</th>
+        <th>청소년가격</th>
+        <th>유아가격</th>
+        <th>항공사</th>
+        <th>액션</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="productDetail : ${productDetails}">
+        <td th:text="${productDetail.productDetailId}">ID</td>
+        <td th:text="${productDetail.productId}">Product ID</td>
+        <td th:text="${productDetail.productDetailFirstDay}">First Day</td>
+        <td th:text="${productDetail.productDetailLastDay}">Last Day</td>
+        <td th:text="${productDetail.productDetailTotalCount}">Total Count</td>
+        <td th:text="${productDetail.productAdultPrice}">Adult Price</td>
+        <td th:text="${productDetail.productTeenagerPrice}">Teenager Price</td>
+        <td th:text="${productDetail.productInfantPrice}">Infant Price</td>
+        <td>
+            <span th:switch="${productDetail.productDetailAirplane}">
+                <span th:case="0">아시아나항공</span>
+                <span th:case="1">대한항공</span>
+                <span th:case="2">진에어</span>
+                <span th:case="3">제주항공</span>
+                <span th:case="*">Unknown</span>
+            </span>
+        </td>
+        <td>
+            <a th:href="@{'/productdetails/' + ${productDetail.productDetailId}}">View</a>
+            <a th:href="@{'/productdetails/delete/' + ${productDetail.productDetailId}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/productdetails/create">Create New Product Detail</a>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Product Detail</title>
+</head>
+<body>
+<h1>Create Product Detail</h1>
+<form th:action="@{/productdetails}" th:object="${productDetail}" method="post">
+    <div>
+        <label>상품아이디:</label>
+        <input type="text" th:field="*{productId}" />
+    </div>
+    <div>
+        <label>투어날:</label>
+        <input type="datetime-local" th:field="*{productDetailFirstDay}" th:value="${productDetail.productDetailFirstDay != null ? productDetail.productDetailFirstDay.toString().substring(0, 16) : ''}" />
+    </div>
+    <div>
+        <label>투어마지막날:</label>
+        <input type="datetime-local" th:field="*{productDetailLastDay}" th:value="${productDetail.productDetailLastDay != null ? productDetail.productDetailLastDay.toString().substring(0, 16) : ''}" />
+    </div>
+    <div>
+        <label>총몇명:</label>
+        <input type="number" th:field="*{productDetailTotalCount}" />
+    </div>
+
+    <div>
+        <label>성인가격:</label>
+        <input type="number" th:field="*{productAdultPrice}" />
+    </div>
+    <div>
+        <label>청소년 가격:</label>
+        <input type="number" th:field="*{productTeenagerPrice}" />
+    </div>
+    <div>
+        <label>유아 가격:</label>
+        <input type="number" th:field="*{productInfantPrice}" />
+    </div>
+    <div>
+        <label>항공사:</label>
+        <select th:field="*{productDetailAirplane}">
+            <option value="0">아시아나항공</option>
+            <option value="1">대한항공</option>
+            <option value="2">진에어</option>
+            <option value="3">제주항공</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+<a href="/productdetails">Back to list</a>
+</body>
+</html>

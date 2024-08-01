@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.106.25:3306/travel?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1234
+
+  server:
+    error:
+      path: /error
+    whitelabel:
+      enabled: false
+
+  thymeleaf:
+    cache: false
+
+  mail:
+    host: smtp.naver.com
+    port: 587
+    username: novus2024@naver.com
+    password: shqjtm2024
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    debug: true
+    # 에러 페이지에 메시지 띄우기
+    error:
+      include-exception: true
+      include-message: always
+      include-binding-errors: always
+      include-stacktrace: always
+
+  jpa:
+  # show-sql: true
+  # properties:
+  #   hibernate:
+  #     format_sql: true
+
+dialogflow:
+  project-id: sinuous-faculty-430000-j7
+  credentials:
+    file: classpath:service-account-key.json
+
+
+

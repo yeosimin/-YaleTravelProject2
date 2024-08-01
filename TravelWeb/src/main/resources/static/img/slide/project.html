@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈쇼핑 2팀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 16px;
+            line-height: 1.5;
+            width: 100%;
+            height: 2000px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main_wrap {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .header_nav {
+            position: fixed;
+            background: #000;
+            width: 100%;
+            height: 40px;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header_nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header_nav ul li {
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            padding: 0 15px;
+        }
+
+        .header_logo {
+            position: fixed;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .header_logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header_logo h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .header_bottom_nav {
+            position: fixed;
+            top: 150px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: top 0.5s ease;
+        }
+
+        .header_bottom_nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header_bottom_nav ul li {
+            display: inline-block;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+        .header_bottom_nav a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @media (max-width: 767px) {
+            /* 모바일 */
+            .header_nav ul li {
+                font-size: 0.8rem;
+                padding: 0 10px;
+            }
+
+            .header_logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .header_bottom_nav ul li {
+                font-size: 1rem;
+                margin: 0 10px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            /* 태블릿 세로 */
+            .header_nav ul li {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .header_logo h1 {
+                font-size: 2rem;
+            }
+
+            .header_bottom_nav ul li {
+                font-size: 1rem;
+                margin: 0 15px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            /* 태블릿 가로 */
+            .header_nav ul li {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+
+            .header_logo h1 {
+                font-size: 2.5rem;
+            }
+
+            .header_bottom_nav ul li {
+                font-size: 1rem;
+                margin: 0 20px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            /* 데스크탑 일반 */
+            .header_nav ul li {
+                font-size: 1rem;
+                padding: 0 25px;
+            }
+
+            .header_logo h1 {
+                font-size: 3rem;
+            }
+
+            .header_bottom_nav ul li {
+                font-size: 1.2rem;
+                margin: 0 25px;
+            }
+        }
+
+        .gnb {
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 98;
+            width: 100%;
+            border-bottom: 1px solid #e6e6e6;
+            background: transparent;
+            transition: all 0.5s ease;
+        }
+
+        .gnb:after {
+            display: block;
+            clear: both;
+            content: '';
+        }
+
+        .gnb .common_menu.act {
+            background: #000;
+        }
+
+        .gnb .common_menu {
+            height: 40px;
+            border-bottom: 1px solid rgba(248, 246, 244, 0.23);
+            background: transparent;
+            transition: all 0.5s ease;
+        }
+
+        .gnb>h1 {
+            visibility: visible;
+            opacity: 1;
+            height: 36px;
+            margin-top: 38px;
+            text-align: center;
+            transition: all 0.6s ease;
+        }
+
+        .gnb>h1>a {
+            display: inline-block;
+            width: 212px;
+            height: 100%;
+            text-indent: -9999px;
+        }
+
+        .gnb .logo_menu {
+            position: relative;
+            visibility: visible;
+            opacity: 1;
+            min-width: 1440px;
+            width: 100%;
+            max-width: 1920px;
+            height: 40px;
+            margin: 35px auto 0;
+            font-size: 0;
+            text-align: center;
+            transition: all 0.6s ease;
+        }
+
+        .gnb .logo_menu>li {
+            display: inline-block;
+            margin: 0 17px;
+            vertical-align: middle;
+        }
+
+        .gnb .logo_menu>li>a {
+            display: block;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 38px;
+            letter-spacing: -0.05rem;
+        }
+
+        .gnb .logo_menu>li.fix_logo {
+            position: absolute;
+            top: 50%;
+            left: 58px;
+            visibility: hidden;
+            opacity: 0;
+            margin-top: -13.5px;
+        }
+
+        .gnb .logo_menu>li.fix_logo>a {
+            display: inline-block;
+            width: 157px;
+            height: 27px;
+            text-indent: -9999px;
+        }
+
+        .gnb .logo_menu>li.logo_first>a {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05rem;
+        }
+
+        .gnb .logo_menu>li.toggle_search {
+            width: 15px;
+        }
+
+        .gnb .logo_menu>li.toggle_search>a {
+            display: block;
+            width: 16px;
+            height: 16px;
+            text-indent: -9999px;
+        }
+
+
+        .gna .logo_menu {
+            height: 40px;
+            background: #fff;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_wrap">
+        <div class="header_content gna">
+            <header class="common_menu">
+                <nav class="header_nav ">
+                    <ul>
+                        <li>홈1</li>
+                        <li>홈2</li>
+                        <li>홈3</li>
+                        <li>홈4</li>
+                        <li>홈5</li>
+                        <li>홈6</li>
+                    </ul>
+                    <ul>
+                        <li>오1</li>
+                        <li>오2</li>
+                        <li>오3</li>
+                    </ul>
+                </nav>
+                <div class="header_logo">
+                    <a href="#">
+                        <h1>team project</h1>
+                    </a>
+                </div>
+                <div class="header_bottom_nav logo_menu">
+                    <ul>
+                        <a href="#">
+                            <li>new</li>
+                        </a>
+                        <a href="#">
+                            <li>best</li>
+                        </a>
+                        <a href="#">
+                            <li>기획전</li>
+                        </a>
+                    </ul>
+                </div>
+            </header>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var headerLogo = document.querySelector('.header_logo');
+            var headerBottomNav = document.querySelector('.header_bottom_nav');
+
+            if (scrollTop > 50) {
+                headerLogo.style.opacity = '0';
+                headerBottomNav.style.top = '100px'; // Adjust this value as needed
+            } else {
+                headerLogo.style.opacity = '1';
+                headerBottomNav.style.top = '150px'; // Adjust this value as needed
+            }
+        });
+    </script>
+</body>
+
+</html>

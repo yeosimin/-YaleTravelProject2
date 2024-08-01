@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+</head>
+<body>
+<h1>상품 상세</h1>
+<div>
+    <label>상품 아이디:</label>
+    <span th:text="${product.productId}"></span>
+</div>
+<div>
+    <label>상품 이름:</label>
+    <span th:text="${product.productName}"></span>
+</div>
+<div>
+    <label>상품 설명:</label>
+    <span th:text="${product.productDescription}"></span>
+</div>
+<div>
+    <label>이미지:</label>
+    <img th:src="${product.productImageUrl}" alt="Product Image" style="max-width: 300px; max-height: 300px;" />
+</div>
+<div>
+    <label>국제 여부:</label>
+    <span th:text="${product.productIsInternational ? '해외' : '국내'}"></span>
+</div>
+<div>
+    <label>등록 날짜:</label>
+    <span th:text="${product.productCreatedAt}"></span>
+</div>
+<div>
+    <label>수정 날짜:</label>
+    <span th:text="${product.productUpdatedAt}"></span>
+</div>
+<div>
+    <label>판매 여부:</label>
+    <span th:text="${product.productFlag ? '삭제' : '판매 중'}"></span>
+</div>
+<div>
+    <label>조회수:</label> <!-- 조회수 항목 추가 -->
+    <span th:text="${product.productViews}"></span>
+</div>
+<div>
+    <a th:href="@{/products/edit/{id}(id=${product.productId})}">수정하기</a>
+    <a th:href="@{/products}">리스트로 돌아가기</a>
+</div>
+</body>
+</html>
