@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity//
 @Table(name = "category_table") // 테이블 이름을 명시합니다.
 public class Category {//
 
