@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "category_table") // 테이블 이름을 명시합니다.
-public class Category {
+public class Category {//
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
