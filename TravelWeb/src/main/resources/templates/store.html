@@ -2,9 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>상품 목록</title>
+    <style>
+        ul {
+            list-style-type: none; /* 점 제거 */
+            padding: 0; /* 기본 패딩 제거 */
+        }
+        li {
+            margin-bottom: 20px; /* 항목 간 간격 조정 */
+        }
+    </style>
+    <script>
+        function parseDate(dateString) {
+            var parts = dateString.split(/[- :]/);
+            return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+        }
+
+        function sortProducts() {
+            var sortBy = document.getElementById("sortBy").value;
+            var ul = document.querySelector("ul");
+            var products = Array.from(ul.children);
+
+            products.sort(function(a, b) {
+                if (sortBy === "latest") {
+                    return parseDate(b.querySelector(".productUpdatedAt").innerText) - parseDate(a.querySelector(".productUpdatedAt").innerText);
+                } else if (sortBy === "oldest") {
+                    return parseDate(a.querySelector(".productUpdatedAt").innerText) - parseDate(b.querySelector(".productUpdatedAt").innerText);
+                } else if (sortBy === "popular") {
+                    return parseInt(b.querySelector(".productViews").innerText) - parseInt(a.querySelector(".productViews").innerText);
+                }
+            });
+
+            ul.innerHTML = "";
+            products.forEach(function(product) {
+                ul.appendChild(product);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("sortBy").addEventListener("change", sortProducts);
+            sortProducts(); // 페이지 로드 시 기본 정렬
+        });
+    </script>
 </head>
 <body>
 <h1>상품 목록</h1>
+
+<!-- 정렬 드롭다운 메뉴 -->
+<label for="sortBy">정렬 기준:</label>
+<select id="sortBy">
+    <option value="latest">최신순</option>
+    <option value="oldest">오래된순</option>
+    <option value="popular">인기순</option>
+</select>
+
 <ul>
     <li th:each="product : ${products}" th:if="${!product.productFlag}">
         <a th:href="@{/store/{id}(id=${product.productId})}">
@@ -27,8 +77,8 @@
                 <span th:case="*">알 수 없음</span>
             </span>
         </p>
-        <p>조회수: <span th:text="${product.productViews}"></span></p> <!-- 조회수 추가 -->
-        <p>수정 날짜: <span th:text="${#temporals.format(product.productUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}"></span></p> <!-- 수정 날짜 추가 -->
+        <p>조회수: <span class="productViews" th:text="${product.productViews}"></span></p>
+        <p>수정 날짜: <span class="productUpdatedAt" th:text="${#temporals.format(product.productUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
     </li>
 </ul>
 </body>

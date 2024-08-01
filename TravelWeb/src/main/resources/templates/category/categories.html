@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: mainContent">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Categories</title>
 </head>
 <body>
-<h2>Categories</h2>
+<h1>Categories</h1>
+<a href="/categories/new">Create New Category</a>
 <table>
     <thead>
     <tr>
@@ -16,15 +16,14 @@
     </thead>
     <tbody>
     <tr th:each="category : ${categories}">
-        <td th:text="${category.categoryId}"></td>
-        <td th:text="${category.categoryName}"></td>
+        <td th:text="${category.categoryId}">1</td>
+        <td th:text="${category.categoryName}">Category Name</td>
         <td>
-            <a th:href="@{/categories/{id}(id=${category.categoryId})}">Edit</a> |
+            <a th:href="@{/categories/{id}(id=${category.categoryId})}">Edit</a>
             <a th:href="@{/categories/delete/{id}(id=${category.categoryId})}">Delete</a>
         </td>
     </tr>
     </tbody>
 </table>
-<a th:href="@{/categories/new}">Add New Category</a>
 </body>
 </html>

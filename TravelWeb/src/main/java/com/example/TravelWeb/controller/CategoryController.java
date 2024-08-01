@@ -20,20 +20,20 @@ public class CategoryController {
     public String getAllCategories(Model model) {
         List<CategoryDTO> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
-        return "categories";
+        return "category/categories";
     }
 
     @GetMapping("/{id}")
     public String getCategoryById(@PathVariable Long id, Model model) {
         CategoryDTO category = categoryService.getCategoryById(id);
         model.addAttribute("category", category);
-        return "category-form";
+        return "category/form";
     }
 
     @GetMapping("/new")
     public String createCategoryForm(Model model) {
         model.addAttribute("category", new CategoryDTO());
-        return "category-form";
+        return "category/form";
     }
 
     @PostMapping
