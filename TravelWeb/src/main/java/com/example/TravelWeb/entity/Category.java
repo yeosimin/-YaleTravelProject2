@@ -21,5 +21,5 @@ public class Category {
     private Long categoryId;
 
     @Column(name = "category_name") // 컬럼 이름을 명시합니다.
-    private String categoryName;
+    private String categoryName;//
 }
