@@ -24,6 +24,10 @@ public class History {
     @Column(name = "product_detail_id")
     private Long productDetailId; //클릭한 상품
 
+    @Column(name = "user_id")
+    private Long userId; //클릭한 상품
+
+
     @PrePersist//db에 저장되기전 실행되는 메서드
     public void onDateNow() {
         this.productDate = ZonedDateTime.now();//현재시간 추가
